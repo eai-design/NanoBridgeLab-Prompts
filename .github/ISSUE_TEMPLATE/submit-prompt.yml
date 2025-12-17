@@ -1,0 +1,111 @@
+name: "Submit New Resource (Full Schema)"
+description: "Submit a new resource with strict metadata fields for NanoBridge Lab"
+title: "🎨 [New Resource] <Title>"
+labels: ["resource", "new", "needs-review"]
+assignees: ["YourGitHubUsername"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📝 Resource Submission Form
+        請依照以下格式填寫內容，這將直接對應到資料庫欄位。
+
+  # 1. Slug (URL ID)
+  - type: input
+    id: slug
+    attributes:
+      label: "Slug (URL ID)"
+      description: "用於網址的唯一識別碼，建議使用英文小寫與連字號。"
+      placeholder: "e.g. neon-hk-street-v1"
+    validations:
+      required: true
+
+  # 2. 分類 (Category) - 使用指定選項
+  - type: dropdown
+    id: category
+    attributes:
+      label: "分類 (Category)"
+      options:
+        - "資訊圖表"
+        - "個人檔案"
+        - "社群媒體貼文"
+        - "海報"
+        - "網站設計"
+        - "漫畫"
+        - "商業產品攝影"
+        - "YouTube 縮圖"
+        - "特效與實驗性"
+        - "PPT 與商務簡報"
+        - "其他"
+    validations:
+      required: true
+
+  # 3. 標題 (Title)
+  - type: input
+    id: title_field
+    attributes:
+      label: "標題 (Title)"
+      description: "資源的主要顯示名稱。"
+      placeholder: "e.g. 賽博龐克風格香港夜景"
+    validations:
+      required: true
+
+  # 4. 描述來源 (Desc/Source)
+  - type: textarea
+    id: desc_source
+    attributes:
+      label: "描述來源 (Desc/Source)"
+      description: "請填寫簡介以及來源連結 (URL)。"
+      placeholder: "這是一個基於 Blade Runner 風格的圖像... 來源參考: https://..."
+    validations:
+      required: true
+
+  # 5. 風格/標籤 (Style/Tags)
+  - type: input
+    id: style_tags
+    attributes:
+      label: "風格/標籤 (Style/Tags)"
+      description: "使用逗號分隔。"
+      placeholder: "Cyberpunk, Cinematic, Neon, 8K"
+    validations:
+      required: false
+
+  # 6. 尺寸 (Size) - 使用百分比參數
+  - type: input
+    id: size_percent
+    attributes:
+      label: "尺寸 (Size %)"
+      description: "請輸入尺寸比例的百分比參數。"
+      placeholder: "e.g. 100%, 56.25% (16:9), 75%"
+    validations:
+      required: true
+
+  # 7. 中文 Prompt
+  - type: textarea
+    id: prompt_cn
+    attributes:
+      label: "中文 Prompt"
+      description: "繁體中文提示詞。"
+      placeholder: "一個美麗的霓虹燈香港街道夜景..."
+    validations:
+      required: false
+
+  # 8. 英文 Prompt
+  - type: textarea
+    id: prompt_en
+    attributes:
+      label: "英文 Prompt"
+      description: "Original English Prompt."
+      placeholder: "A beautiful neon-lit Hong Kong street at night..."
+    validations:
+      required: true
+
+  # 確認協議 (保留原有邏輯)
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: "Agreement"
+      options:
+        - label: "I confirm the data above matches the required schema."
+          required: true
