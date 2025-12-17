@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         ## 📝 Resource Submission Form
-        請依照以下格式填寫內容，這將直接對應到資料庫欄位。
+        請依照以下格式填寫，支援圖片拖曳上傳或 URL。
 
   # 1. Slug (URL ID)
   - type: input
@@ -21,7 +21,7 @@ body:
     validations:
       required: true
 
-  # 2. 分類 (Category) - 使用指定選項
+  # 2. 分類 (Category)
   - type: dropdown
     id: category
     attributes:
@@ -57,7 +57,7 @@ body:
     attributes:
       label: "描述來源 (Desc/Source)"
       description: "請填寫簡介以及來源連結 (URL)。"
-      placeholder: "這是一個基於 Blade Runner 風格的圖像... 來源參考: https://..."
+      placeholder: "簡介內容... 來源參考: https://..."
     validations:
       required: true
 
@@ -71,7 +71,7 @@ body:
     validations:
       required: false
 
-  # 6. 尺寸 (Size) - 使用百分比參數
+  # 6. 尺寸 (Size)
   - type: input
     id: size_percent
     attributes:
@@ -81,7 +81,17 @@ body:
     validations:
       required: true
 
-  # 7. 中文 Prompt
+  # 7. 配圖 (Image) - 新增字段
+  - type: textarea
+    id: featured_image
+    attributes:
+      label: "配圖 (Image / URL)"
+      description: "請提供圖片網址，或直接將圖片「拖曳/貼上」至此框內 (GitHub 會自動上傳)。"
+      placeholder: "https://example.com/image.png 或 直接貼上圖片..."
+    validations:
+      required: true
+
+  # 8. 中文 Prompt
   - type: textarea
     id: prompt_cn
     attributes:
@@ -91,7 +101,7 @@ body:
     validations:
       required: false
 
-  # 8. 英文 Prompt
+  # 9. 英文 Prompt
   - type: textarea
     id: prompt_en
     attributes:
@@ -101,7 +111,7 @@ body:
     validations:
       required: true
 
-  # 確認協議 (保留原有邏輯)
+  # 確認協議
   - type: checkboxes
     id: agreement
     attributes:
